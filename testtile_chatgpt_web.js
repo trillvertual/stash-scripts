@@ -1,12 +1,10 @@
-const UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36";
-
 $httpClient.get({
-  url: "https://chatgpt.com/",
-  headers: { "User-Agent": UA, "Accept": "text/html,*/*;q=0.8" },
+  url: "https://api.openai.com/compliance/cookie_requirements",
+  headers: { "Accept": "application/json" },
   timeout: 8
 }, function(error, response, data) {
   const status = response?.status || response?.statusCode || 0;
-  const ok = !error && status > 0 && status < 500;
+  const ok = !error && status >= 200 && status < 400;
 
   $done({
     content: ok ? "Available" : "Unavailable",
