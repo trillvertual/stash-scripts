@@ -6,9 +6,7 @@ $httpClient.get({
   timeout: 8
 }, function(error, response, data) {
   const status = response?.status || response?.statusCode || 0;
-  const body = (data || "").toLowerCase();
-  const blocked = body.includes("unavailable in your country") || body.includes("not available in your region");
-  const ok = !error && status >= 200 && status < 400 && !blocked;
+  const ok = !error && status > 0 && status < 500;
 
   $done({
     content: ok ? "Available" : "Unavailable",
