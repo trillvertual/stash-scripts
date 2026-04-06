@@ -1,8 +1,6 @@
-const UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36";
-
 $httpClient.get({
-  url: "https://ios.chat.openai.com/",
-  headers: { "User-Agent": UA, "Accept": "text/html,*/*;q=0.8" },
+  url: "https://ios.chat.openai.com/public-api/conversation_limit",
+  headers: { "Accept": "application/json" },
   timeout: 8
 }, function(error, response, data) {
   const status = response?.status || response?.statusCode || 0;
